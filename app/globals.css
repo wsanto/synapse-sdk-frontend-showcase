@@ -1,0 +1,335 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Tailwind CSS custom variant - required for theme system */
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  /* Updated dark theme with refined blue accent for fintech/crypto aesthetic */
+  --background: oklch(0.17 0 0); /* Updated background to dark charcoal gray (#2a2a2a) */
+  --foreground: oklch(0.98 0 0);
+  --card: oklch(0.2 0 0); /* Updated card background to slightly lighter charcoal */
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.2 0 0);
+  --popover-foreground: oklch(0.98 0 0);
+  --primary: oklch(0.72 0.19 35); /* Updated primary color from blue to orange */
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.25 0 0);
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.25 0 0);
+  --muted-foreground: oklch(0.62 0 0);
+  --accent: oklch(0.72 0.19 35); /* Updated accent color from blue to orange */
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.55 0.25 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.28 0 0); /* Updated border to match the darker theme */
+  --input: oklch(0.28 0 0);
+  --ring: oklch(0.72 0.19 35); /* Updated ring color from blue to orange */
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.2 0 0); /* Updated sidebar to match the new dark background */
+  --sidebar-foreground: oklch(0.98 0 0);
+  --sidebar-primary: oklch(0.72 0.19 35); /* Updated sidebar primary color from blue to orange */
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.25 0 0);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-border: oklch(0.28 0 0);
+  --sidebar-ring: oklch(0.72 0.19 35); /* Updated sidebar ring color from blue to orange */
+}
+
+/* Tailwind CSS theme configuration - required for design system */
+@theme inline {
+  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* Tailwind CSS base layer - required for utility classes */
+@layer base {
+  * {
+    /* Tailwind CSS @apply directive - applies border and outline styles */
+    @apply border-border outline-ring/50;
+  }
+  body {
+    /* Tailwind CSS @apply directive - applies background and text colors */
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--muted-foreground));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--accent-foreground));
+}
+
+/* Gradient backgrounds */
+.gradient-bg {
+  background: linear-gradient(135deg, rgb(var(--background)) 0%, rgb(var(--card)) 100%);
+}
+
+.gradient-border {
+  background: linear-gradient(135deg, rgb(var(--primary)) 0%, rgb(var(--accent)) 100%);
+}
+
+/* Search highlighting */
+mark {
+  background-color: rgb(var(--primary) / 0.2);
+  color: rgb(var(--primary));
+  padding: 0 1px;
+  border-radius: 2px;
+  font-weight: 500;
+}
+
+.dark mark {
+  background-color: rgb(var(--primary) / 0.3);
+  color: rgb(var(--primary));
+}
+
+/* Search component specific styles */
+.search-result-item {
+  transition: all 0.2s ease;
+}
+
+.search-result-item:hover {
+  transform: translateX(2px);
+}
+
+/* Loading animation for search */
+.search-loading {
+  animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Recent searches tag styles */
+.recent-search-tag {
+  transition: all 0.15s ease;
+}
+
+.recent-search-tag:hover {
+  transform: scale(1.05);
+}
+
+/* Enhanced search highlighting */
+.search-highlight {
+  background-color: rgb(var(--primary) / 0.3);
+  color: rgb(var(--primary));
+  padding: 0 2px;
+  border-radius: 3px;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgb(var(--primary) / 0.2);
+}
+
+.dark .search-highlight {
+  background-color: rgb(var(--primary) / 0.4);
+  color: rgb(var(--primary));
+  box-shadow: 0 1px 2px rgb(var(--primary) / 0.3);
+}
+
+/* Advanced search result animations */
+.enhanced-search-result {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.enhanced-search-result:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgb(var(--foreground) / 0.1);
+}
+
+/* Categorized results styles */
+.category-section {
+  transition: all 0.3s ease;
+}
+
+.category-section:hover {
+  box-shadow: 0 2px 8px rgb(var(--foreground) / 0.08);
+}
+
+.category-header {
+  transition: all 0.2s ease;
+}
+
+.category-header:hover {
+  background-color: rgb(var(--accent) / 0.5);
+}
+
+/* Relevance indicators */
+.relevance-indicator {
+  animation: pulse 2s infinite;
+}
+
+.relevance-high {
+  background-color: rgb(34 197 94); /* green-500 */
+}
+
+.relevance-medium {
+  background-color: rgb(234 179 8); /* yellow-500 */
+}
+
+.relevance-low {
+  background-color: rgb(249 115 22); /* orange-500 */
+}
+
+.relevance-very-low {
+  background-color: rgb(107 114 128); /* gray-500 */
+}
+
+/* Analytics panel styles */
+.analytics-panel {
+  background: linear-gradient(135deg, rgb(var(--muted) / 0.5) 0%, rgb(var(--accent) / 0.3) 100%);
+  backdrop-filter: blur(8px);
+}
+
+.analytics-stat {
+  transition: all 0.2s ease;
+}
+
+.analytics-stat:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgb(var(--foreground) / 0.1);
+}
+
+/* Search mode toggle */
+.search-mode-toggle {
+  transition: all 0.2s ease;
+}
+
+.search-mode-toggle.active {
+  background-color: rgb(var(--primary));
+  color: rgb(var(--primary-foreground));
+  transform: scale(1.05);
+}
+
+/* Loading states for advanced search */
+.advanced-search-loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.advanced-search-loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgb(var(--muted) / 0.4), transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Popular search suggestions */
+.popular-search-tag {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.popular-search-tag:hover {
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: 0 2px 4px rgb(var(--foreground) / 0.1);
+}
+
+/* Score badges for search results */
+.score-badge {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.025em;
+}
